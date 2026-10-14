@@ -147,11 +147,128 @@ body{background:radial-gradient(ellipse at 9% 12%,#5a715c0f,transparent 37%),rad
  .pick-dialog .pick-shelf{top:21px}
 }
 
+
+/* Riwa v12 — responsive interface. Layout-only overrides; existing data and behaviors unchanged. */
+:root{--ui-border:#b2c49a24;--ui-panel:#122018;--ui-soft:#1b2b20}
+.wrap{max-width:1480px;padding-inline:clamp(14px,2.6vw,34px)}
+.site-header{display:flex;align-items:center;gap:18px;min-height:83px;padding:13px 0!important;justify-content:space-between;flex-wrap:nowrap!important}
+.site-header .brand{flex:0 0 auto;min-width:155px;gap:10px}
+.site-header .brand img{width:48px;height:48px;object-fit:contain}
+.site-header .brand strong{font-size:27px;line-height:1.15}
+.site-header .brand small{display:block;font-size:10px;line-height:1.3}
+.site-header .actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:7px;min-width:0}
+.site-header .actions .btn{font-size:12px;padding:10px 11px;white-space:nowrap;min-height:39px;border-radius:9px}
+.site-header .actions .primary{order:-1}
+.mobile-menu-toggle{display:none}
+#library{display:grid;grid-template-columns:188px minmax(0,1fr);column-gap:24px;align-items:start}
+#library>.riwa-sidebar{grid-column:1;grid-row:1 / span 2}
+#library>.library-content{grid-column:2;grid-row:1;min-width:0}
+.riwa-sidebar{position:sticky;top:16px;display:flex;flex-direction:column;gap:5px;padding:18px 10px;min-height:350px;border-inline-end:1px solid var(--ui-border)}
+.sidebar-title{padding:4px 12px 12px;color:var(--gold);font-size:12px;letter-spacing:.02em}
+.side-link{border:1px solid transparent;display:flex;align-items:center;gap:10px;min-height:42px;width:100%;padding:9px 12px;color:var(--cream);background:transparent;text-align:start;border-radius:11px;font-size:13px;cursor:pointer}
+.side-link:hover,.side-link.side-active{background:#75946d2a;border-color:#8fad7c30}
+.side-divider{height:1px;background:var(--ui-border);margin:8px 8px}
+#library:not(:has(#shelf:not([hidden]))) .riwa-sidebar{display:none}
+#library:not(:has(#shelf:not([hidden]))){display:block}
+#library:not(:has(#shelf:not([hidden]))) .library-content{width:100%}
+#library .hero{max-width:none;min-width:0;min-height:0!important;margin:16px 0 19px!important;padding:22px 26px!important;grid-template-columns:minmax(0,1fr) 170px!important;gap:16px!important}
+#library .hero h1{font-size:clamp(23px,2.4vw,33px)!important;line-height:1.4!important;margin:6px 0!important}
+#library .hero p{font-size:12px!important;line-height:1.7!important;margin:6px 0!important}
+#library .reading-corner{width:165px;max-width:100%}
+#library .reading-corner img{width:100%;max-height:120px;object-fit:contain}
+#library .title-row{margin-top:10px}
+#library .toolbar{display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:12px;margin:10px 0 22px}
+#library .search{min-width:190px;max-width:430px;flex:1;width:auto;order:1}
+#library .filters{flex:0 1 auto;order:0;gap:4px}
+#library .filter{padding:8px 11px;font-size:12px;white-space:nowrap}
+#library .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 14px}
+#library .card{min-width:0}
+#library .cover img{object-fit:contain;background:#1b241d}
+@media(min-width:1360px){#library .grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:1100px){#library{grid-template-columns:158px minmax(0,1fr);gap:12px}.site-header .actions .btn{padding:8px;font-size:11px}.site-header .brand{min-width:125px}.site-header .brand strong{font-size:23px}#library .grid{grid-template-columns:repeat(3,minmax(0,1fr))}#library .toolbar{flex-wrap:wrap}#library .search{max-width:none}}
+@media(max-width:760px){
+ .wrap{padding-inline:14px}
+ .site-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:12px 0!important;min-height:0}
+ .site-header .brand{grid-column:1;grid-row:1;min-width:0;justify-self:start}
+ .site-header .brand img{width:42px;height:42px}
+ .site-header .brand strong{font-size:25px}
+ .site-header .brand small{font-size:9px}
+ .mobile-menu-toggle{display:inline-flex;grid-column:2;grid-row:1;justify-self:end;align-items:center;justify-content:center;width:43px;height:43px;padding:0;font-size:22px}
+ .site-header .actions{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;justify-content:stretch}
+ .site-header .actions .btn{width:100%;min-width:0;min-height:40px;padding:8px 4px;font-size:11px;overflow:hidden;text-overflow:ellipsis}
+ .site-header .actions #addButton{order:-3}.site-header .actions #pickOpen{order:-2}.site-header .actions #hubOpen{order:-1}
+ .site-header .actions #challengeOpen,.site-header .actions #importOpen,.site-header .actions #demoButton,.site-header .actions #signout{display:none!important}
+ #library,#library:not(:has(#shelf:not([hidden]))){display:block}
+ #library>.library-content{width:100%}
+ #library>.riwa-sidebar{display:none;position:relative;top:auto;min-height:0;padding:10px;border:1px solid var(--ui-border);border-radius:14px;background:#152019;margin:10px 0}
+ #library.mobile-menu-open>.riwa-sidebar{display:flex!important}
+ #library .hero{grid-template-columns:minmax(0,1fr) 100px!important;gap:8px!important;margin:12px 0 17px!important;padding:14px!important;border-radius:16px}
+ #library .hero h1{font-size:clamp(18px,4.9vw,25px)!important;line-height:1.35!important}
+ #library .hero p{font-size:10px!important;line-height:1.6!important}
+ #library .hero p br{display:none}
+ #library .hero .eyebrow{font-size:9px}
+ #library .reading-corner{width:100px!important;max-width:100%!important}
+ #library .reading-corner img{width:100%!important;max-height:99px!important}
+ #library .reading-corner span{display:none}
+ #library .title-row h2{font-size:22px}
+ #library .toolbar{display:flex;flex-direction:column;align-items:stretch;gap:10px;margin:10px 0 17px}
+ #library .search{width:100%;max-width:none;min-width:0;order:-1;min-height:43px}
+ #library .filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;width:100%}
+ #library .filter{min-width:0;padding:9px 3px;font-size:clamp(9px,2.7vw,12px);white-space:nowrap}
+ #library .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 10px}
+ #library .card{max-width:none}
+ #library .cover{border-radius:5px 10px 10px 5px}
+ }
+@media(max-width:370px){#library .hero{grid-template-columns:minmax(0,1fr) 72px!important;padding:11px!important}#library .reading-corner{width:72px!important}#library .hero h1{font-size:18px!important}.site-header .actions .btn{font-size:10px}}
+/* Riwa v12.1 — single navigation location on desktop. Keep action buttons in DOM for sidebar delegation. */
+@media (min-width:761px){
+ .site-header .actions #hubOpen,
+ .site-header .actions #challengeOpen,
+ .site-header .actions #importOpen,
+ .site-header .actions #demoButton,
+ .site-header .actions #signout{display:none!important}
+ .site-header .actions{flex-wrap:nowrap;gap:9px}
+ .site-header{min-height:72px}
+}
+/* On mobile the same secondary functions are accessed through the menu, not the header. */
+@media (max-width:760px){
+ .site-header .actions #hubOpen{display:none!important}
+ .site-header .actions{display:flex;justify-content:stretch}
+ .site-header .actions #addButton,.site-header .actions #pickOpen{flex:1;max-width:none}
+}
+</style><style>/* V12.3: Keep offscreen book cards out of initial layout/paint work. */
+@supports (content-visibility:auto){#grid>.card{content-visibility:auto;contain-intrinsic-size:auto 370px}}
+#grid .cover img{image-rendering:auto}
+</style><style>
+/* V12.4: keep authentication UI invisible until the session has been resolved. */
+#authBoot{position:fixed;inset:0;z-index:99999;background:#0d1410;display:grid;place-items:center;color:#f3eee4;font-family:Cairo,Arial,sans-serif}
+#authBoot[hidden]{display:none!important}
+.auth-boot-inner{display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center}
+.auth-boot-inner img{width:66px;height:66px;object-fit:contain}
+.auth-boot-inner strong{font-size:29px;line-height:1.5}
+.auth-boot-inner span{font-size:12px;color:#b7c2b0}
+.auth-boot-spinner{width:23px;height:23px;border:2px solid #b7c2b04a;border-top-color:#d4be8e;border-radius:50%;animation:authBootSpin .8s linear infinite;margin-top:12px}
+@keyframes authBootSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.auth-boot-spinner{animation:none}}
 </style></head>
-<body><div class="wrap"><header><a class="brand" href="#"><img src="logo.svg" alt="شعار رِوا: كتاب مفتوح تنمو منه أوراق خضراء"><div><strong>رِوا <span lang="en" dir="ltr" style="font-size:12px;font-weight:500;letter-spacing:2px;color:var(--muted);margin-inline-start:6px">Riwa</span></strong><small>حياة واحدة لا تكفيني</small></div></a><div class="actions"><button class="btn" id="hubOpen" hidden title="رحلتي مع القراءة">📊 <span class="discovery-label">رحلتي</span></button><button class="btn challenge-launch" id="challengeOpen" hidden title="تحدي القراءة" aria-label="فتح تحدي القراءة">📖 <span>تحدي القراءة</span></button><button class="btn discovery-btn" id="pickOpen" hidden title="اختارلي كتاب" aria-label="اختارلي كتاب"><span class="mini-ico">🎲</span> <span class="discovery-label">اختارلي كتاب</span></button><button class="btn discovery-btn" id="importOpen" hidden title="استيراد من Goodreads" aria-label="استيراد من Goodreads"><span class="mini-ico">⇩</span> <span class="discovery-label">Goodreads</span></button><button class="btn" id="demoButton">جولة في المكتبة</button><button class="btn primary" id="addButton" hidden>＋ كتاب جديد</button><button class="btn" id="signout" hidden>خروج</button></div></header>
-<main><section id="library"><div class="hero"><div><span class="eyebrow">ركنك الهادئ بين الصفحات</span><h1>كتابٌ جديد،<br>وحياةٌ أخرى تعيشها.</h1><p>هنا تحتفظ بالكتب التي أحببتها، والأفكار التي بقيت معك.<br>خذ وقتك… القهوة دافئة، والحكايات لا تنتهي.</p></div><div class="reading-corner"><img src="reading-corner.svg" alt="ركن قراءة: زرع أخضر وفنجان قهوة وكتب على سطح خشبي داكن"><span>صفحات قليلة… وهدوء كثير</span></div></div>
-<section id="auth" class="auth-panel"><h2>أهلًا بك في رِوا</h2><p>سجّل دخولك بنفس الحساب من أي جهاز، لتجد مكتبتك وتقييماتك معك دائمًا.</p><form id="loginForm"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" dir="ltr" required><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" required minlength="6"><button class="btn primary" id="loginButton" disabled>جارٍ تجهيز الاتصال…</button></form><p id="authMessage" role="status">تسجيل الدخول بحسابك الشخصي المُضاف في Supabase.</p></section>
-<div id="shelf" hidden><div class="challenge-dialog-wrap"><dialog id="challengeDialog" class="challenge-dialog" aria-label="تحدي القراءة الشخصي"><section class="journey"><div class="challenge-dialog-top"><strong>📖 رحلتي مع القراءة</strong><button class="btn" type="button" id="challengeClose" aria-label="إغلاق التحدي">✕</button></div><div class="journey-head"><div><span class="eyebrow">رحلتك بين الصفحات</span><h2>تحدي القراءة <span id="challengeYear"></span></h2></div><span class="badge" id="challengeBadge">تحديك الشخصي</span></div><p class="section-caption">خطوة بخطوة، كل كتاب يقرّبك من هدفك.</p><div class="challenge-stats"><div class="challenge-stat"><strong id="completedCount">0</strong><span>كتاب مكتمل</span></div><div class="challenge-stat"><strong id="challengeGoal">15</strong><span>هدف السنة</span></div><div class="challenge-stat"><strong id="challengePercent">0%</strong><span>نسبة الإنجاز</span></div></div><div class="progress-track" role="progressbar" aria-label="نسبة تحقيق تحدي القراءة" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="challengeTrack"><div class="progress-fill" id="challengeFill" style="width:0%"></div></div><div class="challenge-bottom"><span id="challengeRemaining">ابدأ بأول كتاب</span><strong id="challengePace"></strong></div><form id="goalForm" class="challenge-settings"><div><label for="goalInput">هدفي لهذه السنة (كتب)</label><input id="goalInput" type="number" inputmode="numeric" min="1" max="500" value="15" required></div><button id="goalSave" class="btn primary" type="submit">حفظ الهدف</button></form><p class="challenge-small">تتحسب الكتب اللي حالتها «قرأتُه» وعندها تاريخ انتهاء داخل السنة. الكتب القديمة بدون تاريخ مش هتتحسب إلا بعد إضافة تاريخها.</p></section></dialog></div><div class="title-row"><h2>على رفّ المكتبة</h2><span id="count" class="count"></span></div><div class="toolbar"><div class="filters" aria-label="تصفية حسب حالة القراءة"><button class="filter active" data-filter="all">كل الكتب</button><button class="filter" data-filter="reading">أقرأ الآن</button><button class="filter" data-filter="read">قرأتُه</button><button class="filter" data-filter="toread">سأقرأه</button></div><input class="search" id="search" type="search" placeholder="ابحث عن كتاب أو مؤلف…" aria-label="بحث عن كتاب أو مؤلف"></div><div class="grid" id="grid"></div></div></section>
+<body><div id="authBoot" role="status" aria-live="polite"><div class="auth-boot-inner"><img src="logo.svg" alt="رِوا"><strong>رِوا</strong><span>جارٍ تجهيز مكتبتك…</span><div class="auth-boot-spinner" aria-hidden="true"></div></div></div><div class="wrap"><header class="site-header"><a class="brand" href="#"><img src="logo.svg" alt="شعار رِوا: كتاب مفتوح تنمو منه أوراق خضراء"><div><strong>رِوا <span lang="en" dir="ltr" style="font-size:12px;font-weight:500;letter-spacing:2px;color:var(--muted);margin-inline-start:6px">Riwa</span></strong><small>حياة واحدة لا تكفيني</small></div></a><button class="btn mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="riwaSidebar">☰</button><div class="actions"><button class="btn" id="hubOpen" hidden title="رحلتي مع القراءة">📊 <span class="discovery-label">رحلتي</span></button><button class="btn challenge-launch" id="challengeOpen" hidden title="تحدي القراءة" aria-label="فتح تحدي القراءة">📖 <span>تحدي القراءة</span></button><button class="btn discovery-btn" id="pickOpen" hidden title="اختارلي كتاب" aria-label="اختارلي كتاب"><span class="mini-ico">🎲</span> <span class="discovery-label">اختارلي كتاب</span></button><button class="btn discovery-btn" id="importOpen" hidden title="استيراد من Goodreads" aria-label="استيراد من Goodreads"><span class="mini-ico">⇩</span> <span class="discovery-label">Goodreads</span></button><button class="btn" id="demoButton">جولة في المكتبة</button><button class="btn primary" id="addButton" hidden>＋ كتاب جديد</button><button class="btn" id="signout" hidden>خروج</button></div></header>
+<main><section id="library">
+<nav class="riwa-sidebar" id="riwaSidebar" aria-label="التنقل في المكتبة">
+ <div class="sidebar-title">مكتبتك</div>
+ <button type="button" class="side-link side-active" data-side-filter="all">▤ <span>المكتبة</span></button>
+ <button type="button" class="side-link" data-side-filter="reading">▣ <span>أقرأ الآن</span></button>
+ <button type="button" class="side-link" data-side-filter="read">✓ <span>قرأته</span></button>
+ <button type="button" class="side-link" data-side-filter="toread">◷ <span>سأقرأه</span></button>
+ <div class="side-divider"></div>
+ <button type="button" class="side-link" data-side-action="hubOpen">▥ <span>إحصائياتي</span></button>
+ <button type="button" class="side-link" data-side-action="challengeOpen">⚑ <span>تحدي القراءة</span></button>
+ <button type="button" class="side-link" data-side-action="importOpen">⇩ <span>Goodreads</span></button>
+ <button type="button" class="side-link" data-side-action="demoButton">◉ <span>جولة في المكتبة</span></button>
+ <button type="button" class="side-link" data-side-action="signout">↪ <span>خروج</span></button>
+</nav>
+<div class="library-content"><div class="hero"><div><span class="eyebrow">ركنك الهادئ بين الصفحات</span><h1>كتابٌ جديد،<br>وحياةٌ أخرى تعيشها.</h1><p>هنا تحتفظ بالكتب التي أحببتها، والأفكار التي بقيت معك.<br>خذ وقتك… القهوة دافئة، والحكايات لا تنتهي.</p></div><div class="reading-corner"><img src="reading-corner.svg" alt="ركن قراءة: زرع أخضر وفنجان قهوة وكتب على سطح خشبي داكن"><span>صفحات قليلة… وهدوء كثير</span></div></div>
+<section id="auth" class="auth-panel" hidden><h2>أهلًا بك في رِوا</h2><p>سجّل دخولك بنفس الحساب من أي جهاز، لتجد مكتبتك وتقييماتك معك دائمًا.</p><form id="loginForm"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" dir="ltr" required><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" required minlength="6"><button class="btn primary" id="loginButton" disabled>جارٍ تجهيز الاتصال…</button></form><p id="authMessage" role="status">تسجيل الدخول بحسابك الشخصي المُضاف في Supabase.</p></section>
+<div id="shelf" hidden><div class="challenge-dialog-wrap"><dialog id="challengeDialog" class="challenge-dialog" aria-label="تحدي القراءة الشخصي"><section class="journey"><div class="challenge-dialog-top"><strong>📖 رحلتي مع القراءة</strong><button class="btn" type="button" id="challengeClose" aria-label="إغلاق التحدي">✕</button></div><div class="journey-head"><div><span class="eyebrow">رحلتك بين الصفحات</span><h2>تحدي القراءة <span id="challengeYear"></span></h2></div><span class="badge" id="challengeBadge">تحديك الشخصي</span></div><p class="section-caption">خطوة بخطوة، كل كتاب يقرّبك من هدفك.</p><div class="challenge-stats"><div class="challenge-stat"><strong id="completedCount">0</strong><span>كتاب مكتمل</span></div><div class="challenge-stat"><strong id="challengeGoal">15</strong><span>هدف السنة</span></div><div class="challenge-stat"><strong id="challengePercent">0%</strong><span>نسبة الإنجاز</span></div></div><div class="progress-track" role="progressbar" aria-label="نسبة تحقيق تحدي القراءة" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="challengeTrack"><div class="progress-fill" id="challengeFill" style="width:0%"></div></div><div class="challenge-bottom"><span id="challengeRemaining">ابدأ بأول كتاب</span><strong id="challengePace"></strong></div><form id="goalForm" class="challenge-settings"><div><label for="goalInput">هدفي لهذه السنة (كتب)</label><input id="goalInput" type="number" inputmode="numeric" min="1" max="500" value="15" required></div><button id="goalSave" class="btn primary" type="submit">حفظ الهدف</button></form><p class="challenge-small">تتحسب الكتب اللي حالتها «قرأتُه» وعندها تاريخ انتهاء داخل السنة. الكتب القديمة بدون تاريخ مش هتتحسب إلا بعد إضافة تاريخها.</p></section></dialog></div><div class="title-row"><h2>على رفّ المكتبة</h2><span id="count" class="count"></span></div><div class="toolbar"><div class="filters" aria-label="تصفية حسب حالة القراءة"><button class="filter active" data-filter="all">كل الكتب</button><button class="filter" data-filter="reading">أقرأ الآن</button><button class="filter" data-filter="read">قرأتُه</button><button class="filter" data-filter="toread">سأقرأه</button></div><input class="search" id="search" type="search" placeholder="ابحث عن كتاب أو مؤلف…" aria-label="بحث عن كتاب أو مؤلف"></div><div class="grid" id="grid"></div></div></div></section>
 <section id="bookPage" hidden><div class="detailbar"><a class="btn" href="#">→ العودة للمكتبة</a><div class="actions" id="bookActions"><button class="btn" id="editButton">تعديل الكتاب</button><button class="btn danger" id="deleteButton">حذف الكتاب</button></div></div><div id="detail" class="detail"></div></section></main>
 <footer><span>رِوا · حياة واحدة لا تكفيني</span><span id="sync" role="status">لم يتم تسجيل الدخول</span><span class="credit" lang="en" dir="ltr">Created by <strong>Hossam El Antary</strong></span></footer></div>
 
@@ -167,7 +284,8 @@ const $=id=>document.getElementById(id), labels={reading:'أقرأ الآن',rea
 const noteDrafts=new Map();
 const CACHE_PREFIX='riwa-books-v1:';
 function cachedBooks(owner){try{const value=JSON.parse(sessionStorage.getItem(CACHE_PREFIX+owner)||'null');return Array.isArray(value?.books)?value.books:[]}catch{return []}}
-function saveCache(){if(!user||demo)return;try{const value=JSON.stringify({books});if(value.length<3000000)sessionStorage.setItem(CACHE_PREFIX+user.id,value);else sessionStorage.removeItem(CACHE_PREFIX+user.id)}catch{}}
+let cacheSaveTimer=null;
+function saveCache(){if(!user||demo)return;clearTimeout(cacheSaveTimer);const owner=user.id;cacheSaveTimer=setTimeout(()=>{if(user?.id!==owner)return;try{const value=JSON.stringify({books});if(value.length<3000000)sessionStorage.setItem(CACHE_PREFIX+owner,value);else sessionStorage.removeItem(CACHE_PREFIX+owner)}catch{}},700)}
 function clearCache(owner){try{if(owner)sessionStorage.removeItem(CACHE_PREFIX+owner)}catch{}}
 async function reconcileBooks(){if(!user)return;const owner=user.id;const {data,error}=await client.from('books').select('id,updated_at').eq('user_id',owner).eq('deleted',false);if(error||user?.id!==owner)return;const known=new Map(books.map(b=>[b.id,b.updated_at]));if(data.length!==known.size||data.some(b=>known.get(b.id)!==b.updated_at))await loadBooks()}
 function applyBookChange(payload,owner){if(user?.id!==owner)return;const b=payload.new;if(payload.eventType==='DELETE'){books=books.filter(x=>x.id!==payload.old.id)}else if(b?.user_id===owner){const index=books.findIndex(x=>x.id===b.id);if(b.deleted)books=books.filter(x=>x.id!==b.id);else if(index<0)books.unshift(b);else books[index]={...books[index],...b};books.sort((a,b)=>String(b.created_at).localeCompare(String(a.created_at)))}else return;saveCache();render()}
@@ -178,7 +296,7 @@ const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>'
 function toast(msg){$('notice').textContent=msg;$('notice').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('notice').hidden=true,6500)}
 function errorMessage(err){if(err?.code==='42P01'||err?.code==='PGRST205')return 'قاعدة المكتبة لم تُجهّز بعد. شغّل ملف supabase-setup.sql في SQL Editor.';if(err?.message?.includes('Invalid login'))return 'البريد أو كلمة المرور غير صحيحين.';if(err?.message?.includes('Email not confirmed'))return 'فعّل البريد الإلكتروني أولًا.';return 'تعذّر إتمام العملية. تأكد من الاتصال بالإنترنت وإعدادات المشروع، ثم حاول مرة أخرى.'}
 function stars(n){return n?'★'.repeat(n)+'☆'.repeat(5-n):'بدون تقييم'}
-function coverMarkup(b){const safe=/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(b.cover||'')||/^https:\/\//.test(b.cover||'');return `<div class="cover">${safe?`<img src="${escape(b.cover)}" alt="غلاف ${escape(b.title)}" loading="lazy" referrerpolicy="no-referrer">`:`<div class="fallback"><i>✦</i><span>${escape(b.title)}</span><small>${escape(b.author)}</small><i>—</i></div>`}</div>`}
+function coverMarkup(b){const safe=/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(b.cover||'')||/^https:\/\//.test(b.cover||'');return `<div class="cover">${safe?`<img src="${escape(b.cover)}" alt="غلاف ${escape(b.title)}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`:`<div class="fallback"><i>✦</i><span>${escape(b.title)}</span><small>${escape(b.author)}</small><i>—</i></div>`}</div>`}
 function thisYear(){return new Date().getFullYear()}
 function readingPercent(b){const total=Number(b.page_count)||0;return total?Math.min(100,Math.round((Number(b.current_page)||0)/total*100)):0}
 function bookProgressMarkup(b){const total=Number(b.page_count)||0;if(!total)return `<div class="book-progress"><div class="book-progress-head"><strong>تقدم القراءة</strong></div><small>أضف عدد صفحات الكتاب من «تعديل الكتاب» لتفعيل متابعة الصفحات.</small></div>`;const pct=b.status==='read'?100:readingPercent(b);const current=b.status==='read'?total:Number(b.current_page)||0;return `<div class="book-progress"><div class="book-progress-head"><strong>تقدم القراءة</strong><span>${pct}%</span></div><div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div><small>${current} من ${total} صفحة · متبقي ${Math.max(0,total-current)} صفحة</small>${!demo&&user&&b.status!=='read'?`<form class="quick-progress-form" data-progress-book="${escape(b.id)}"><div><label for="quickLastPage">آخر صفحة وصلت لها</label><input id="quickLastPage" name="lastPage" type="number" min="0" max="${total}" step="1" inputmode="numeric" value="${current}" required></div><button class="btn primary" type="submit">حفظ التقدم</button></form>`:''}${b.finished_at?`<div class="reading-meta">انتهيت منه: ${escape(b.finished_at)}</div>`:''}</div>`}
@@ -346,7 +464,8 @@ $('importConfirm').onclick=async()=>{
  }finally{busy=false;btn.disabled=true}
 };
 function render(){if($('hubOpen'))$('hubOpen').hidden=!user&&!demo;const term=$('search').value.trim().toLocaleLowerCase('ar');const list=books.filter(b=>(filter==='all'||b.status===filter)&&`${b.title} ${b.author}`.toLocaleLowerCase('ar').includes(term)).sort((a,b)=>String(a.title||'').localeCompare(String(b.title||''),'ar',{sensitivity:'base',numeric:true}));$('count').textContent=`${books.length} كتاب${demo?' · معاينة تجريبية':''}`;$('grid').innerHTML=list.length?list.map(b=>`<a class="card" href="#book/${encodeURIComponent(b.id)}" aria-label="افتح ${escape(b.title)}">${coverMarkup(b)}<h3>${escape(b.title)}</h3><p>${escape(b.author)}</p><div class="card-meta"><span class="badge ${escape(b.status)}">${labels[b.status]}</span><span class="stars" aria-label="التقييم ${b.rating} من خمسة">${stars(b.rating)}</span></div>${b.page_count?`<div class="reading-meta">${b.status==='read'?'مكتمل':`${readingPercent(b)}% مكتمل`} · ${Number(b.page_count)} صفحة</div>`:''}</a>`).join(''):`<div class="empty"><h2>${books.length?'لا توجد كتب تطابق البحث':'كل حياة تبدأ بكتاب'}</h2><p>${books.length?'جرّب اسمًا آخر أو غيّر التصفية.':'أضف أول كتاب، وابدأ حكاية مكتبتك.'}</p></div>`;renderChallenge();route()}
-function route(){const id=location.hash.startsWith('#book/')?decodeURIComponent(location.hash.slice(6)):null;$('library').hidden=!!id;$('bookPage').hidden=!id;if(!id){timerPause();return}const b=books.find(x=>x.id===id);if(b&&user&&!summaryRequested.has(id)){summaryRequested.add(id);fetchSessionSummary(id)}$('bookActions').hidden=demo||!b||!user;$('detail').innerHTML=b?`${coverMarkup(b)}<div><span class="eyebrow">من رفوف رِوا</span><h1>${escape(b.title)}</h1><p class="author">${escape(b.author)}</p><span class="badge ${escape(b.status)}">${labels[b.status]}</span><p class="stars">${stars(b.rating)}</p>${bookProgressMarkup(b)}${sessionMarkup(b)}<div class="summary">${escape(b.summary||'لم تضف انطباعك عن هذا الكتاب بعد.')}</div>${notesMarkup(b)}</div>${bookCollectionsMarkup(b)}`:'<div class="empty">الكتاب غير متاح. ارجع للمكتبة أو سجّل دخولك.</div>'}
+let previousRoutedBookId=null;
+function route(){const id=location.hash.startsWith('#book/')?decodeURIComponent(location.hash.slice(6)):null;const openingDifferentBook=id!==null&&id!==previousRoutedBookId;previousRoutedBookId=id;$('library').hidden=!!id;$('bookPage').hidden=!id;if(openingDifferentBook){requestAnimationFrame(()=>window.scrollTo({top:0,left:0,behavior:'instant'}));}if(!id){timerPause();return}const b=books.find(x=>x.id===id);if(b&&user&&!summaryRequested.has(id)){summaryRequested.add(id);fetchSessionSummary(id)}$('bookActions').hidden=demo||!b||!user;$('detail').innerHTML=b?`${coverMarkup(b)}<div><span class="eyebrow">من رفوف رِوا</span><h1>${escape(b.title)}</h1><p class="author">${escape(b.author)}</p><span class="badge ${escape(b.status)}">${labels[b.status]}</span><p class="stars">${stars(b.rating)}</p>${bookProgressMarkup(b)}${sessionMarkup(b)}<div class="summary">${escape(b.summary||'لم تضف انطباعك عن هذا الكتاب بعد.')}</div>${notesMarkup(b)}</div>${bookCollectionsMarkup(b)}`:'<div class="empty">الكتاب غير متاح. ارجع للمكتبة أو سجّل دخولك.</div>'}
 
 // Reading timer uses per-account, per-book local drafts. Saved sessions still go to Supabase.
 let summaryRequested=new Set();let timerBook=null,timerElapsed=0,timerStarted=null,timerTicker=null,sessionSummaries=new Map(),sessionSaving=false;
@@ -408,8 +527,8 @@ $('detail').onclick=async e=>{
 window.addEventListener('beforeunload',e=>{if(noteDrafts.size){e.preventDefault();e.returnValue=''}});
 
 window.addEventListener('hashchange',route);$('search').oninput=render;document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b))});render()});
-async function loadBooks(){if(!user)return;const owner=user.id,seq=++loadSequence;const {data,error}=await client.from('books').select('*').eq('user_id',owner).eq('deleted',false).order('created_at',{ascending:false});if(seq!==loadSequence||user?.id!==owner)return;if(error){$('sync').textContent='تعذّر تحميل المكتبة';toast(errorMessage(error));return}books=data;saveCache();render()}
-async function sessionChanged(session){if(user&&session?.user?.id===user.id){return}const previousOwner=user?.id;if(!session?.user)clearCache(previousOwner);const seq=++sessionSequence;loadSequence++;if(channel){client.removeChannel(channel);channel=null}user=session?.user||null;noteDrafts.clear();timerPause();timerBook=null;timerElapsed=0;sessionSummaries.clear();summaryRequested.clear();demo=false;challengeGoal=15;challengeLoaded=false;books=user?cachedBooks(user.id):[];$('editor').close();$('deleteDialog').close();$('challengeDialog').close();$('pickDialog').close();$('importDialog').close();$('auth').hidden=!!user;$('shelf').hidden=!user;$('addButton').hidden=!user;$('challengeOpen').hidden=!user;$('pickOpen').hidden=!user;$('importOpen').hidden=!user;$('signout').hidden=!user;$('demoButton').hidden=!!user;$('sync').textContent=user?(books.length?'آخر نسخة محفوظة · جارٍ التحديث…':'جارٍ الاتصال بالمكتبة…'):'لم يتم تسجيل الدخول';render();if(!user)return;await loadBooks();if(seq!==sessionSequence)return;await loadChallenge();if(seq!==sessionSequence)return;await hubLoad();if(seq!==sessionSequence)return;route();channel=client.channel(`books-${user.id}`).on('postgres_changes',{event:'*',schema:'public',table:'books',filter:`user_id=eq.${user.id}`},payload=>applyBookChange(payload,session.user.id)).subscribe(state=>{if(seq!==sessionSequence)return;$('sync').textContent=state==='SUBSCRIBED'?'● التزامن متصل':state==='CHANNEL_ERROR'||state==='TIMED_OUT'?'التزامن اللحظي منقطع · أعد الاتصال':'جارٍ اتصال التزامن…';if(state==='SUBSCRIBED')reconcileBooks()})}
+async function loadBooks(){if(!user)return;const owner=user.id,seq=++loadSequence;const {data,error}=await client.from('books').select('*').eq('user_id',owner).eq('deleted',false).order('created_at',{ascending:false});if(seq!==loadSequence||user?.id!==owner)return;if(error){$('sync').textContent='تعذّر تحميل المكتبة';toast(errorMessage(error));return}const same=books.length===data.length&&books.every((b,i)=>b.id===data[i].id&&b.updated_at===data[i].updated_at);if(same){$('sync').textContent='المكتبة محدّثة';return}books=data;saveCache();render()}
+async function sessionChanged(session){if(user&&session?.user?.id===user.id){return}const previousOwner=user?.id;if(!session?.user)clearCache(previousOwner);const seq=++sessionSequence;loadSequence++;if(channel){client.removeChannel(channel);channel=null}user=session?.user||null;noteDrafts.clear();timerPause();timerBook=null;timerElapsed=0;sessionSummaries.clear();summaryRequested.clear();demo=false;challengeGoal=15;challengeLoaded=false;books=user?cachedBooks(user.id):[];$('editor').close();$('deleteDialog').close();$('challengeDialog').close();$('pickDialog').close();$('importDialog').close();$('auth').hidden=!!user;$('shelf').hidden=!user;$('authBoot').hidden=true;$('addButton').hidden=!user;$('challengeOpen').hidden=!user;$('pickOpen').hidden=!user;$('importOpen').hidden=!user;$('signout').hidden=!user;$('demoButton').hidden=!!user;$('sync').textContent=user?(books.length?'آخر نسخة محفوظة · جارٍ التحديث…':'جارٍ الاتصال بالمكتبة…'):'لم يتم تسجيل الدخول';render();if(!user)return;await loadBooks();if(seq!==sessionSequence)return;await loadChallenge();if(seq!==sessionSequence)return;await hubLoad();if(seq!==sessionSequence)return;route();channel=client.channel(`books-${user.id}`).on('postgres_changes',{event:'*',schema:'public',table:'books',filter:`user_id=eq.${user.id}`},payload=>applyBookChange(payload,session.user.id)).subscribe(state=>{if(seq!==sessionSequence)return;$('sync').textContent=state==='SUBSCRIBED'?'● التزامن متصل':state==='CHANNEL_ERROR'||state==='TIMED_OUT'?'التزامن اللحظي منقطع · أعد الاتصال':'جارٍ اتصال التزامن…';if(state==='SUBSCRIBED')reconcileBooks()})}
 $('loginForm').onsubmit=async e=>{e.preventDefault();$('loginButton').disabled=true;try{const {error}=await client.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)throw error;$('password').value=''}catch(err){$('authMessage').textContent=errorMessage(err)}finally{$('loginButton').disabled=false}};
 $('signout').onclick=async()=>{const {error}=await client.auth.signOut();if(error)toast(errorMessage(error));else{clearCache(user?.id);location.hash=''}};
 $('demoButton').onclick=()=>{demo=!demo;$('auth').hidden=demo;$('shelf').hidden=!demo;$('demoButton').textContent=demo?'العودة لتسجيل الدخول':'جولة في المكتبة';$('challengeOpen').hidden=!demo;$('pickOpen').hidden=!demo;$('importOpen').hidden=true;$('sync').textContent=demo?'معاينة فقط · لا تُحفظ بيانات':'لم يتم تسجيل الدخول';books=demo?[{id:'demo-1',title:'الأيام',author:'طه حسين',status:'read',finished_at:`${thisYear()}-04-12`,page_count:160,current_page:160,rating:5,summary:'مثال لشكل صفحة الكتاب. أضف انطباعاتك الخاصة بعد تسجيل الدخول.'},{id:'demo-2',title:'رسائل إلى شاعر شاب',author:'راينر ماريا ريلكه',status:'reading',page_count:240,current_page:110,rating:4,summary:'مساحة للكلمات التي بقيت معك.'},{id:'demo-3',title:'مئة عام من العزلة',author:'غابرييل غارسيا ماركيز',status:'toread',rating:0,summary:''},{id:'demo-4',title:'النبي',author:'جبران خليل جبران',status:'read',rating:5,summary:''}]:[];location.hash='';render()};
@@ -454,7 +573,29 @@ $('detail').addEventListener('submit',async e=>{if(!['bookQuoteForm','bookJourna
 $('detail').addEventListener('click',async e=>{const cp=e.target.closest('[data-book-copy]');if(cp){const q=hubQuotes.find(x=>x.id===cp.dataset.bookCopy);if(q)try{await navigator.clipboard.writeText(q.quote_text);toast('تم نسخ الاقتباس')}catch{toast('تعذّر النسخ')}return}const del=e.target.closest('[data-book-delete]');if(!del||!user||demo)return;const [kind,id]=del.dataset.bookDelete.split(':');if(!confirm('هل تريد حذف هذا السجل من الكتاب ومن رحلتي؟'))return;const table=kind==='quote'?'reading_quotes':'reading_journal';const {error}=await client.from(table).delete().eq('id',id).eq('user_id',user.id);if(error){toast('تعذّر الحذف');return}await hubLoad();route();toast('تم الحذف من المكانين')});
 // Load entries on direct book visits and when changing books.
 window.addEventListener('hashchange',()=>{if(location.hash.startsWith('#book/')&&user&&!demo&&!hubLoading)hubLoad().then(()=>{if(location.hash.startsWith('#book/'))route()})});
-try{const {createClient}=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/+esm');client=createClient(URL,KEY);client.auth.onAuthStateChange((event,session)=>{if(['INITIAL_SESSION','SIGNED_IN','SIGNED_OUT'].includes(event))setTimeout(()=>sessionChanged(session),0)});$('loginButton').disabled=false;$('loginButton').textContent='دخول إلى مكتبتي'}catch(err){$('authMessage').textContent='تعذّر تحميل الاتصال. تأكد من الإنترنت ثم حدّث الصفحة.';$('loginButton').textContent='الاتصال غير متاح'}
+try{const {createClient}=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/+esm');client=createClient(URL,KEY);client.auth.onAuthStateChange((event,session)=>{if(['INITIAL_SESSION','SIGNED_IN','SIGNED_OUT'].includes(event))setTimeout(()=>sessionChanged(session),0)});$('loginButton').disabled=false;$('loginButton').textContent='دخول إلى مكتبتي'}catch(err){$('authMessage').textContent='تعذّر تحميل الاتصال. تأكد من الإنترنت ثم حدّث الصفحة.';$('loginButton').textContent='الاتصال غير متاح';$('auth').hidden=false;$('authBoot').hidden=true}
 route();
-</script></body></html>
+</script>
+<script>
+// UI-only navigation delegates to existing buttons and filters.
+(function(){
+ const menu=document.getElementById('mobileMenuToggle');
+ const library=document.getElementById('library');
+ const sidebar=document.getElementById('riwaSidebar');
+ if(!menu||!library||!sidebar)return;
+ const close=()=>{library.classList.remove('mobile-menu-open');menu.setAttribute('aria-expanded','false');};
+ menu.addEventListener('click',()=>{const opened=library.classList.toggle('mobile-menu-open');menu.setAttribute('aria-expanded',String(opened));});
+ sidebar.addEventListener('click',e=>{
+  const target=e.target.closest('button');if(!target)return;
+  if(target.dataset.sideFilter){
+   const filter=document.querySelector('#library .filters [data-filter="'+target.dataset.sideFilter+'"]');
+   if(filter)filter.click();
+   sidebar.querySelectorAll('[data-side-filter]').forEach(b=>b.classList.toggle('side-active',b===target));
+  }else if(target.dataset.sideAction){const original=document.getElementById(target.dataset.sideAction);if(original&&!original.hidden)original.click();}
+  close();
+ });
+ document.querySelectorAll('#library .filters [data-filter]').forEach(btn=>btn.addEventListener('click',()=>sidebar.querySelectorAll('[data-side-filter]').forEach(b=>b.classList.toggle('side-active',b.dataset.sideFilter===btn.dataset.filter))));
+})();
+</script>
+</body></html>
 
